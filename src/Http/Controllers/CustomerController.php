@@ -20,6 +20,6 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        return response()->json(['data' => $this->customerService->all()]);
+        return response()->json(['data' => $this->customerService->delete(11)]);
     }
 }
