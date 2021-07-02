@@ -1,6 +1,6 @@
 <?php
 
-namespace Jsdecena\Payjunction\Factory;
+namespace Jsdecena\Payjunction\Factories;
 
 use Exception;
 use GuzzleHttp\Client;

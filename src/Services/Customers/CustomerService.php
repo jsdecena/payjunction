@@ -4,6 +4,9 @@ namespace Jsdecena\Payjunction\Services\Customers;
 
 use Exception;
 use GuzzleHttp\Exception\GuzzleException;
+use Jsdecena\Payjunction\Exceptions\CustomerCreateException;
+use Jsdecena\Payjunction\Exceptions\CustomerNotFoundException;
+use Jsdecena\Payjunction\Exceptions\CustomerUpdateException;
 use Jsdecena\Payjunction\Services\BaseService;
 
 class CustomerService extends BaseService
@@ -18,7 +21,6 @@ class CustomerService extends BaseService
 
     /**
      * Get all the customers
-     *
      * @throws Exception
      * @throws GuzzleException
      */
@@ -37,15 +39,18 @@ class CustomerService extends BaseService
      * @param array $data
      *
      * @return mixed
-     * @throws GuzzleException
      */
     public function store(array $data)
     {
-        $response = $this->http->post($this->host . $this->endpoint, [
-            'form_params' => $data
-        ]);
+        try {
+            $response = $this->http->post($this->host . $this->endpoint, [
+                'form_params' => $data
+            ]);
 
-        return json_decode($response->getBody(), true);
+            return json_decode($response->getBody(), true);
+        } catch (GuzzleException $exception) {
+            return new CustomerCreateException($exception);
+        }
     }
 
     /**
@@ -54,13 +59,16 @@ class CustomerService extends BaseService
      * @param int $id
      *
      * @return mixed
-     * @throws GuzzleException
      */
     public function show(int $id)
     {
-        $response = $this->http->get($this->host . $this->endpoint . '/' . $id);
+        try {
+            $response = $this->http->get($this->host . $this->endpoint . '/' . $id);
 
-        return json_decode($response->getBody(), true);
+            return json_decode($response->getBody(), true);
+        } catch (GuzzleException $exception) {
+            return new CustomerNotFoundException($exception);
+        }
     }
 
     /**
@@ -70,15 +78,18 @@ class CustomerService extends BaseService
      * @param array $data
      *
      * @return mixed
-     * @throws GuzzleException
      */
     public function update(int $id, array $data)
     {
-        $response = $this->http->put($this->host . $this->endpoint . '/' . $id, [
-            'form_params' => $data
-        ]);
+        try {
+            $response = $this->http->put($this->host . $this->endpoint . '/' . $id, [
+                'form_params' => $data
+            ]);
 
-        return json_decode($response->getBody(), true);
+            return json_decode($response->getBody(), true);
+        } catch (GuzzleException $exception) {
+            return new CustomerUpdateException($exception);
+        }
     }
 
     /**
@@ -87,12 +98,16 @@ class CustomerService extends BaseService
      * @param int $id
      *
      * @return mixed
-     * @throws GuzzleException
+     * @throws CustomerNotFoundException
      */
     public function delete(int $id)
     {
-        $response = $this->http->delete($this->host . $this->endpoint . '/' . $id);
+        try {
+            $response = $this->http->delete($this->host . $this->endpoint . '/' . $id);
 
-        return json_decode($response->getBody(), true);
+            return json_decode($response->getBody(), true);
+        } catch (GuzzleException $exception) {
+            throw new CustomerNotFoundException($exception);
+        }
     }
 }

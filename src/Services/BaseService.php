@@ -3,7 +3,7 @@
 namespace Jsdecena\Payjunction\Services;
 
 use GuzzleHttp\Client;
-use Jsdecena\Payjunction\Factory\ClientFactory;
+use Jsdecena\Payjunction\Factories\ClientFactory;
 
 abstract class BaseService
 {
