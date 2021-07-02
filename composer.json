@@ -28,7 +28,8 @@
     },
     "require": {
         "php": "^7.3",
-        "ext-json": "*"
+        "ext-json": "*",
+        "guzzlehttp/guzzle": "^7.3"
     },
     "require-dev": {
         "orchestra/testbench": "^6.19"

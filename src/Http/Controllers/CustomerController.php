@@ -3,7 +3,8 @@
 namespace Jsdecena\Payjunction\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Jsdecena\Payjunction\Exceptions\CustomerNotFoundException;
+use GuzzleHttp\Exception\GuzzleException;
+use Illuminate\Http\JsonResponse;
 use Jsdecena\Payjunction\Services\Customers\CustomerService;
 
 class CustomerController extends Controller
@@ -16,14 +17,12 @@ class CustomerController extends Controller
     }
 
     /**
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
+     *
+     * @throws GuzzleException
      */
-    public function index()
+    public function index(): JsonResponse
     {
-        try {
-            return response()->json(['data' => $this->customerService->delete(11)]);
-        } catch (CustomerNotFoundException $e) {
-            return response()->json(['error' => $e->getMessage()]);
-        }
+        return response()->json(['data' => $this->customerService->all()]);
     }
 }
