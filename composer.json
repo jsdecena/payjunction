@@ -8,6 +8,11 @@
             "Jsdecena\\Payjunction\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Jsdecena\\Payjunction\\Tests\\": "tests/"
+        }
+    },
     "authors": [
         {
             "name": "Jeff Simons Decena",
@@ -22,7 +27,10 @@
         }
     },
     "require": {
-        "php": "7.4",
+        "php": "^7.3",
         "ext-json": "*"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.19"
     }
 }
