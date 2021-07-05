@@ -1,4 +1,4 @@
-name: develop
+name: master
 on:
   push:
     branches: [ master ]
@@ -8,7 +8,7 @@ jobs:
   develop:
     runs-on: ubuntu-latest
     container:
-      image: jsdecena/php72-composer
+      image: jsdecena/php74-composer
     steps:
       - uses: actions/checkout@v2
       - name: Copy .env
