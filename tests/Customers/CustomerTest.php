@@ -68,7 +68,7 @@ class CustomerTest extends BaseTestCase
         $handlerStack = HandlerStack::create($this->mock);
         $client = new Client(['handler' => $handlerStack]);
 
-        $service = new PayjunctionService($client);
+        $service = new PayjunctionService($client, 'test', 'test', 'test');
         $customerService = new CustomerService($service);
         $all = $customerService->all();
 

@@ -4,6 +4,9 @@
 
 Un-official [Payjunction](https://www.payjunction.com) SDK for PHP (WIP)
 
+# Requirements
+PHP >= v7.3
+
 # Install
 
 ```bash

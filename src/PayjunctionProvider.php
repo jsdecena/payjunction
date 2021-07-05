@@ -12,11 +12,7 @@ class PayjunctionProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadRoutesFrom(__DIR__ . '/routes/api.php');
-
-        $this->publishes([
-            __DIR__ . '/config/payjunction.php' => config_path('payjunction.php'),
-        ]);
+        //
     }
 
     /**
