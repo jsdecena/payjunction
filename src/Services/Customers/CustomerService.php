@@ -24,12 +24,16 @@ class CustomerService
 
     /**
      * Get all the customers
-     *
      * @throws GuzzleException
      */
     public function all(array $queryParams = ['limit' => 50, 'offset' => 0])
     {
-        $response = $this->service->http->get($this->service->host . $this->endpoint . '?' . http_build_query($queryParams));
+        $query = $this->service->host . $this->endpoint . '?' . http_build_query($queryParams);
+
+        $response = $this
+            ->service
+            ->http
+            ->get($query, $this->service->headers);
 
         $jsonDecodeResponse = json_decode($response->getBody(), true);
 
@@ -42,7 +46,6 @@ class CustomerService
      * @param array $data
      *
      * @return mixed
-     *
      * @throws GuzzleException
      */
     public function store(array $data)
@@ -60,7 +63,6 @@ class CustomerService
      * @param int $id
      *
      * @return mixed
-     *
      * @throws GuzzleException
      */
     public function show(int $id)
@@ -77,7 +79,6 @@ class CustomerService
      * @param array $data
      *
      * @return mixed
-     *
      * @throws GuzzleException
      */
     public function update(int $id, array $data)
@@ -95,7 +96,6 @@ class CustomerService
      * @param int $id
      *
      * @return mixed
-     *
      * @throws GuzzleException
      */
     public function delete(int $id)

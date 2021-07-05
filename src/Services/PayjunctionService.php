@@ -11,6 +11,8 @@ class PayjunctionService extends BaseService
     /** @var Client $http Guzzle Client */
     public Client $http;
 
+    public $headers;
+
     /**
      * BaseService constructor.
      */
@@ -18,12 +20,7 @@ class PayjunctionService extends BaseService
     {
         $this->host = config('payjunction.host', $this->url);
 
-//        $this->http = new Client([
-//            'headers' => [
-//                'Authorization' => 'Basic ' . base64_encode(config('payjunction.username', '') . ':' . config('payjunction.password', '')),
-//                'X-PJ-Application-Key' => config('payjunction.app_key', '')
-//            ]
-//        ]);
         $this->http = $client;
+        $this->headers = $this->getHeaders();
     }
 }
