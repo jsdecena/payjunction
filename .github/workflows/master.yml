@@ -11,9 +11,7 @@ jobs:
       image: jsdecena/php74-composer
     steps:
       - uses: actions/checkout@v2
-      - name: Copy .env
-        run: php -r "file_exists('.env') || copy('.env.testing', '.env');"
       - name: Install Dependencies
         run: composer install --no-ansi --no-interaction --no-progress --no-scripts --optimize-autoloader
       - name: Execute tests (Unit and Feature tests) via PHPUnit
-        run: vendor/bin/phpunit
+        run: vendor/bin/phpunit tests/
