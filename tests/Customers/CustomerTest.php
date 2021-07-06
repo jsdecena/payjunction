@@ -3,7 +3,6 @@
 namespace Jsdecena\Payjunction\Tests\Customers;
 
 use GuzzleHttp\Client;
-use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
 use Jsdecena\Payjunction\Services\Customers\CustomerService;
@@ -60,9 +59,9 @@ class CustomerTest extends BaseTestCase
 
     /**
      * @test
-     * @throws GuzzleException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function it_should_perform_customer_and_customer_notes_crud()
+    public function it_should_perform_customer_crud()
     {
         // Show all customers
         $showCustomers = $this->customerService->all();

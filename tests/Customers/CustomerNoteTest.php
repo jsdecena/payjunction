@@ -49,7 +49,9 @@ class CustomerNoteTest extends BaseTestCase
         ];
     }
 
-    /** @test */
+    /** @test
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
     public function it_should_perform_customer_notes_crud()
     {
 

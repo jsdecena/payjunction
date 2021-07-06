@@ -80,3 +80,25 @@ $customerAddressService->update(1, ['address' => 'Foo bar']); ### update custome
 $customerAddressService->delete(1); ### delete customer address
 ```
 
+## Transactions
+
+```php
+use Jsdecena\Payjunction\Services\Transactions\TransactionService;
+use Jsdecena\Payjunction\Services\PayjunctionService;
+
+$service = new PayjunctionService('<your-username>', '<your-password>', '<your-app-key>');
+$transactionService = new TransactionService($service);
+
+$transactionService->all(); ### Get all transactions
+$data = [
+    'cardNumber' => '4444333322221111',
+    'cardExpMonth' => '01',
+    'cardExpYear' => '18',
+    'cardCvv' => '999',
+    'amountBase' => '10.00'
+];
+$transactionService->store($data); ### create transaction
+$transactionService->show(1); ### show customer transaction
+$transactionService->update(1, ['address' => 'Foo bar']); ### update customer transaction
+```
+

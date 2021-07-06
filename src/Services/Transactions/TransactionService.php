@@ -1,20 +1,20 @@
 <?php
 
-namespace Jsdecena\Payjunction\Services\Customers;
+namespace Jsdecena\Payjunction\Services\Transactions;
 
 use Jsdecena\Payjunction\Services\PayjunctionService;
 
-class CustomerService
+class TransactionService
 {
     private PayjunctionService $service;
 
     /**
      * API Docs
-     * @url https://developer.payjunction.com/hc/en-us/sections/203755228-Customers
+     * @url https://developer.payjunction.com/hc/en-us/articles/216477437-GET-transactions-transactionId-
      */
 
     /** @var string $endpoint */
-    private string $endpoint = '/customers';
+    private string $endpoint = '/transactions';
 
     public function __construct(PayjunctionService $service)
     {
@@ -36,7 +36,7 @@ class CustomerService
     }
 
     /**
-     * Create a customer
+     * Create a transaction
      *
      * @param array $data
      *
@@ -51,7 +51,7 @@ class CustomerService
     }
 
     /**
-     * Get the information of a specific customers
+     * Get the information of a specific transaction
      *
      * @param int $id
      *
@@ -64,7 +64,7 @@ class CustomerService
     }
 
     /**
-     * Get the information of a specific customers
+     * Get the information of a specific transaction
      *
      * @param int $id
      * @param array $data
@@ -77,18 +77,5 @@ class CustomerService
         return $this->service->http->put($this->service->host . $this->endpoint . '/' . $id, [
             'form_params' => $data
         ]);
-    }
-
-    /**
-     * Get the information of a specific customers
-     *
-     * @param int $id
-     *
-     * @return \Psr\Http\Message\ResponseInterface
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     */
-    public function delete(int $id): \Psr\Http\Message\ResponseInterface
-    {
-        return $this->service->http->delete($this->service->host . $this->endpoint . '/' . $id);
     }
 }
