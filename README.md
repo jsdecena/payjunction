@@ -112,7 +112,6 @@ $transactionReceiptService->fromTransaction($transactionId);
 $transactionNoteService = new TransactionNoteService($service);
 $transactionId = 123;
 $transactionNoteService->allNotes($transactionId);
-
 $noteData = [
     'noteId' => 1,
     'uri' => "https://api.payjunctionlabs.com/customers/1/notes/1",
@@ -121,12 +120,9 @@ $noteData = [
     'lastModified' => '2021-07-01T17:44:46Z'
 ];
 $transactionNoteService->storeNote($transactionId, $noteData);
-
 $noteId = 456;
 $transactionNoteService->showNote($transactionId, $noteId);
-
 $transactionNoteService->updateNote($transactionId, $noteId, $noteData);
-
 $transactionNoteService->deleteNote($transactionId, $noteId);
 ```
 

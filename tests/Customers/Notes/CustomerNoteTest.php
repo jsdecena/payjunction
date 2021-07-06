@@ -1,11 +1,11 @@
 <?php
 
-namespace Jsdecena\Payjunction\Tests\Customers;
+namespace Jsdecena\Payjunction\Tests\Customers\Notes;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
-use Jsdecena\Payjunction\Services\Customers\CustomerNoteService;
+use Jsdecena\Payjunction\Services\Customers\Notes\CustomerNoteService;
 use Jsdecena\Payjunction\Services\PayjunctionService;
 use Jsdecena\Payjunction\Tests\BaseTestCase;
 

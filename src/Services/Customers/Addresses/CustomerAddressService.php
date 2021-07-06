@@ -1,7 +1,8 @@
 <?php
 
-namespace Jsdecena\Payjunction\Services\Customers;
+namespace Jsdecena\Payjunction\Services\Customers\Addresses;
 
+use Jsdecena\Payjunction\Services\Customers\BaseCustomerService;
 use Jsdecena\Payjunction\Services\PayjunctionService;
 
 class CustomerAddressService extends BaseCustomerService
