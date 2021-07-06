@@ -23,6 +23,7 @@ class CustomerNoteTest extends BaseTestCase
         $service = new PayjunctionService('test', 'test', 'test', false, $client);
         $this->customerNoteService = new CustomerNoteService(1, $service);
     }
+
     /**
      * @return array
      */

@@ -35,36 +35,11 @@ class CustomerTest extends BaseTestCase
     public function getMockResponse(Response ...$response): array
     {
         return [
-            new Response(200, [], json_encode($this->allCustomersMock())), // All customers
+            new Response(200, [], json_encode([$this->customerMock()])), // All customers
             new Response(201, [], json_encode($this->customerMock())), // Create customer
             new Response(200, [], json_encode($this->customerMock())), // Show customer
             new Response(200, [], json_encode($this->customerMock())), // Update customer
             new Response(202, [], json_encode([])), // Delete
-        ];
-    }
-
-    /**
-     * @return array
-     */
-    private function allCustomersMock(): array
-    {
-        return [
-            [
-                'customerId' => 1,
-                'uri' => 'https://api.payjunctionlabs.com/customers/1',
-                'firstName' => 'John',
-                'lastName' => 'Doe',
-                'created' => '2021-07-01T17:44:46Z',
-                'lastModified' => '2021-07-01T17:44:46Z'
-            ],
-            [
-                'customerId' => 2,
-                'uri' => 'https://api.payjunctionlabs.com/customers/2',
-                'firstName' => 'Jane',
-                'lastName' => 'Doe',
-                'created' => '2021-07-01T17:44:46Z',
-                'lastModified' => '2021-07-01T17:44:46Z'
-            ]
         ];
     }
 
@@ -92,7 +67,7 @@ class CustomerTest extends BaseTestCase
         // Show all customers
         $showCustomers = $this->customerService->all();
         $showCustomersDecode = json_decode($showCustomers->getBody(), true);
-        $this->assertJsonStringEqualsJsonString(json_encode($this->allCustomersMock()), json_encode($showCustomersDecode));
+        $this->assertJsonStringEqualsJsonString(json_encode([$this->customerMock()]), json_encode($showCustomersDecode));
 
         // Create customer
         $createCustomer = $this->customerService->store($this->customerMock());

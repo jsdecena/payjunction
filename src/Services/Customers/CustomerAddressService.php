@@ -4,19 +4,18 @@ namespace Jsdecena\Payjunction\Services\Customers;
 
 use Jsdecena\Payjunction\Services\PayjunctionService;
 
-class CustomerNoteService extends BaseCustomerService
+class CustomerAddressService extends BaseCustomerService
 {
     private PayjunctionService $service;
 
     private int $customerId;
 
+    private string $addressEndpoint = '/addresses';
+
     /**
      * API Docs
-     * @url https://developer.payjunction.com/hc/en-us/articles/216543507-POST-customers-customerId-notes
+     * @url https://developer.payjunction.com/hc/en-us/articles/216543627-POST-customers-customerId-addresses
      */
-
-    /** @var string $endpoint */
-    private string $noteEndpoint = '/notes';
 
     public function __construct(int $customerId, PayjunctionService $service)
     {
@@ -27,21 +26,21 @@ class CustomerNoteService extends BaseCustomerService
     /**
      * Build the URL endpoint
      *
-     * @param int|null $noteId
+     * @param int|null $addressId
      *
      * @return string
      */
-    public function buildUrl(int $noteId = null): string
+    public function buildUrl(int $addressId = null): string
     {
-        $endpoint = $this->endpoint . "/$this->customerId/$this->noteEndpoint";
-        if ($noteId) {
-            $endpoint .= "/$noteId";
+        $endpoint = $this->endpoint . "/$this->customerId/$this->addressEndpoint";
+        if ($addressId) {
+            $endpoint .= "/$addressId";
         }
         return $endpoint;
     }
 
     /**
-     * Get all the customer's notes
+     * Get all the customer addresses
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function all(array $queryParams = ['limit' => 50, 'offset' => 0]): \Psr\Http\Message\ResponseInterface
@@ -56,7 +55,7 @@ class CustomerNoteService extends BaseCustomerService
     }
 
     /**
-     * Create a customer note
+     * Create a customer address
      *
      * @param array $data
      *
@@ -71,7 +70,7 @@ class CustomerNoteService extends BaseCustomerService
     }
 
     /**
-     * Get the information of a specific customer note
+     * Get the information of a specific customer address
      *
      * @param int $id
      *
@@ -84,7 +83,7 @@ class CustomerNoteService extends BaseCustomerService
     }
 
     /**
-     * Update the information of a specific customer note
+     * Update the information of a specific customer address
      *
      * @param int $id
      * @param array $data
@@ -100,7 +99,7 @@ class CustomerNoteService extends BaseCustomerService
     }
 
     /**
-     * Delete the information of a specific customer note
+     * Delete the information of a specific customer address
      *
      * @param int $id
      *
