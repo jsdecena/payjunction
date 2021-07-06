@@ -102,6 +102,7 @@ $transactionService->show(1); ### show customer transaction
 $transactionService->update(1, ['address' => 'Foo bar']); ### update customer transaction
 
 // Get the receipt
-$transactionService->showReceipts(1);
+$transactionId = 123;
+$transactionService->showReceipts($transactionId);
 ```
 
