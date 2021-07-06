@@ -24,7 +24,6 @@ use Jsdecena\Payjunction\Services\PayjunctionService;
 $service = new PayjunctionService('<your-username>', '<your-password>', '<your-app-key>');
 $customerService = new CustomerService($service);
 
-// === CRUD
 $customerService->all(); ### Get all customers
 $customerService->store(['firstName' => 'John', 'lastName' => 'Doe']); ### create customer
 $customerService->show(1); ### show customer
@@ -37,5 +36,23 @@ $all = $customerService->all();
 json_decode($all->getBody(), true);
 // Or as an object
 json_decode($all->getBody());
+```
+
+## Customer notes
+
+```php
+use Jsdecena\Payjunction\Services\Customers\CustomerNoteService;
+use Jsdecena\Payjunction\Services\PayjunctionService;
+
+$service = new PayjunctionService('<your-username>', '<your-password>', '<your-app-key>');
+$customerId = 123;
+$customerNoteService = new CustomerNoteService($customerId, $service);
+
+$customerNoteService->all(); ### Get all customer notes
+$note = ['note' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer imperdiet purus vel molestie cursus. Pellentesque condimentum leo ut rutrum tincidunt. '];
+$customerNoteService->store($note); ### create customer note
+$customerNoteService->show(1); ### show customer note
+$customerNoteService->update(1, ['note' => 'Foo bar']); ### update customer note
+$customerNoteService->delete(1); ### delete customer note
 ```
 
