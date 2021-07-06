@@ -100,5 +100,8 @@ $data = [
 $transactionService->store($data); ### create transaction
 $transactionService->show(1); ### show customer transaction
 $transactionService->update(1, ['address' => 'Foo bar']); ### update customer transaction
+
+// Get the receipt
+$transactionService->showReceipts(1);
 ```
 

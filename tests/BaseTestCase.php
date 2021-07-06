@@ -8,7 +8,7 @@ use Orchestra\Testbench\TestCase;
 
 abstract class BaseTestCase extends TestCase
 {
-    protected $mock;
+    protected MockHandler $mock;
 
     /**
      * Set up
@@ -20,5 +20,10 @@ abstract class BaseTestCase extends TestCase
         $this->mock = new MockHandler($this->getMockResponse());
     }
 
+    /**
+     * @param Response ...$response
+     *
+     * @return array
+     */
     public abstract function getMockResponse(Response ... $response): array;
 }
