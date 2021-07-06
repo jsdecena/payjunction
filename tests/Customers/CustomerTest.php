@@ -2,11 +2,8 @@
 
 namespace Jsdecena\Payjunction\Tests\Customers;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
 use Jsdecena\Payjunction\Services\Customers\CustomerService;
-use Jsdecena\Payjunction\Services\PayjunctionService;
 use Jsdecena\Payjunction\Tests\BaseTestCase;
 
 class CustomerTest extends BaseTestCase
@@ -16,12 +13,7 @@ class CustomerTest extends BaseTestCase
     public function setUp(): void
     {
         parent::setUp();
-
-        $handlerStack = HandlerStack::create($this->mock);
-        $client = new Client(['handler' => $handlerStack]);
-
-        $service = new PayjunctionService('test', 'test', 'test', false, $client);
-        $this->customerService = new CustomerService($service);
+        $this->customerService = new CustomerService($this->service);
     }
 
     /**

@@ -2,11 +2,8 @@
 
 namespace Jsdecena\Payjunction\Tests\Customers\Addresses;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
 use Jsdecena\Payjunction\Services\Customers\Addresses\CustomerAddressService;
-use Jsdecena\Payjunction\Services\PayjunctionService;
 use Jsdecena\Payjunction\Tests\BaseTestCase;
 
 class CustomerAddressTest extends BaseTestCase
@@ -16,12 +13,7 @@ class CustomerAddressTest extends BaseTestCase
     public function setUp(): void
     {
         parent::setUp();
-
-        $handlerStack = HandlerStack::create($this->mock);
-        $client = new Client(['handler' => $handlerStack]);
-
-        $service = new PayjunctionService('test', 'test', 'test', false, $client);
-        $this->customerAddressService = new CustomerAddressService(1, $service);
+        $this->customerAddressService = new CustomerAddressService(1, $this->service);
     }
 
     private function addressMock(): array

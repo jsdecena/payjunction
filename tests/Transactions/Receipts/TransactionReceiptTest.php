@@ -2,10 +2,7 @@
 
 namespace Jsdecena\Payjunction\Tests\Transactions\Receipts;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
-use Jsdecena\Payjunction\Services\PayjunctionService;
 use Jsdecena\Payjunction\Services\Transactions\Receipts\TransactionReceiptService;
 use Jsdecena\Payjunction\Tests\BaseTestCase;
 
@@ -16,12 +13,7 @@ class TransactionReceiptTest extends BaseTestCase
     public function setUp(): void
     {
         parent::setUp();
-
-        $handlerStack = HandlerStack::create($this->mock);
-        $client = new Client(['handler' => $handlerStack]);
-
-        $service = new PayjunctionService('test', 'test', 'test', false, $client);
-        $this->transactionReceiptService = new TransactionReceiptService(1, $service);
+        $this->transactionReceiptService = new TransactionReceiptService(1, $this->service);
     }
 
     public function getMockResponse(Response ...$response): array

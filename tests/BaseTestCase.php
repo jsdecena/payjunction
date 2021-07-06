@@ -2,13 +2,16 @@
 
 namespace Jsdecena\Payjunction\Tests;
 
+use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
+use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
+use Jsdecena\Payjunction\Services\PayjunctionService;
 use Orchestra\Testbench\TestCase;
 
 abstract class BaseTestCase extends TestCase
 {
-    protected MockHandler $mock;
+    protected PayjunctionService $service;
 
     /**
      * Set up
@@ -17,7 +20,11 @@ abstract class BaseTestCase extends TestCase
     {
         parent::setUp();
 
-        $this->mock = new MockHandler($this->getMockResponse());
+        $mock = new MockHandler($this->getMockResponse());
+        $handlerStack = HandlerStack::create($mock);
+        $client = new Client(['handler' => $handlerStack]);
+
+        $this->service = new PayjunctionService('test', 'test', 'test', false, $client);
     }
 
     /**
