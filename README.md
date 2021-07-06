@@ -56,3 +56,27 @@ $customerNoteService->update(1, ['note' => 'Foo bar']); ### update customer note
 $customerNoteService->delete(1); ### delete customer note
 ```
 
+## Customer addresses
+
+```php
+use Jsdecena\Payjunction\Services\Customers\CustomerAddressService;
+use Jsdecena\Payjunction\Services\PayjunctionService;
+
+$service = new PayjunctionService('<your-username>', '<your-password>', '<your-app-key>');
+$customerId = 123;
+$customerAddressService = new CustomerAddressService($customerId, $service);
+
+$customerAddressService->all(); ### Get all customer addresses
+$address = [
+    "address" => "Piazza di Spagna 26",
+    "city" => "Roma",
+    "state" => "Provincia di Roma",
+    "country" => "Italy",
+    "zip" => "00187",
+];
+$customerAddressService->store($address); ### create customer address
+$customerAddressService->show(1); ### show customer address
+$customerAddressService->update(1, ['address' => 'Foo bar']); ### update customer address
+$customerAddressService->delete(1); ### delete customer address
+```
+
