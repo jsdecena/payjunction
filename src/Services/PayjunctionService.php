@@ -19,8 +19,8 @@ class PayjunctionService extends BaseService
     public function __construct(string $username, string $password, string $appKey, $isProduction = false, Client $client = null)
     {
         $this->setConfigurations($username, $password, $appKey);
-        $this->http = $client ?? new Client();
         $this->host = $this->getHost($isProduction);
         $this->headers = $this->getHeaders();
+        $this->http = $client ?? new Client($this->headers);
     }
 }

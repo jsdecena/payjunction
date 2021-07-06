@@ -26,18 +26,14 @@ class CustomerService
      * Get all the customers
      * @throws GuzzleException
      */
-    public function all(array $queryParams = ['limit' => 50, 'offset' => 0])
+    public function all(array $queryParams = ['limit' => 50, 'offset' => 0]): \Psr\Http\Message\ResponseInterface
     {
         $query = $this->service->host . $this->endpoint . '?' . http_build_query($queryParams);
 
-        $response = $this
+        return $this
             ->service
             ->http
             ->get($query, $this->service->headers);
-
-        $jsonDecodeResponse = json_decode($response->getBody(), true);
-
-        return $jsonDecodeResponse['results'];
     }
 
     /**
@@ -45,16 +41,15 @@ class CustomerService
      *
      * @param array $data
      *
-     * @return mixed
+     * @return \Psr\Http\Message\ResponseInterface
+     *
      * @throws GuzzleException
      */
-    public function store(array $data)
+    public function store(array $data): \Psr\Http\Message\ResponseInterface
     {
-        $response = $this->service->http->post($this->service->host . $this->endpoint, [
+        return $this->service->http->post($this->service->host . $this->endpoint, [
             'form_params' => $data
         ]);
-
-        return json_decode($response->getBody(), true);
     }
 
     /**
@@ -62,14 +57,12 @@ class CustomerService
      *
      * @param int $id
      *
-     * @return mixed
+     * @return \Psr\Http\Message\ResponseInterface
      * @throws GuzzleException
      */
-    public function show(int $id)
+    public function show(int $id): \Psr\Http\Message\ResponseInterface
     {
-        $response = $this->service->http->get($this->service->host . $this->endpoint . '/' . $id);
-
-        return json_decode($response->getBody(), true);
+        return $this->service->http->get($this->service->host . $this->endpoint . '/' . $id);
     }
 
     /**
@@ -78,16 +71,14 @@ class CustomerService
      * @param int $id
      * @param array $data
      *
-     * @return mixed
+     * @return \Psr\Http\Message\ResponseInterface
      * @throws GuzzleException
      */
-    public function update(int $id, array $data)
+    public function update(int $id, array $data): \Psr\Http\Message\ResponseInterface
     {
-        $response = $this->service->http->put($this->service->host . $this->endpoint . '/' . $id, [
+        return $this->service->http->put($this->service->host . $this->endpoint . '/' . $id, [
             'form_params' => $data
         ]);
-
-        return json_decode($response->getBody(), true);
     }
 
     /**
@@ -95,13 +86,11 @@ class CustomerService
      *
      * @param int $id
      *
-     * @return mixed
+     * @return \Psr\Http\Message\ResponseInterface
      * @throws GuzzleException
      */
-    public function delete(int $id)
+    public function delete(int $id): \Psr\Http\Message\ResponseInterface
     {
-        $response = $this->service->http->delete($this->service->host . $this->endpoint . '/' . $id);
-
-        return json_decode($response->getBody(), true);
+        return $this->service->http->delete($this->service->host . $this->endpoint . '/' . $id);
     }
 }

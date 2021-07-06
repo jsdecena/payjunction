@@ -30,5 +30,12 @@ $customerService->store(['firstName' => 'John', 'lastName' => 'Doe']); ### creat
 $customerService->show(1); ### show customer
 $customerService->update(1, ['firstName' => 'Jane', 'lastName' => 'Doe']); ### update customer
 $customerService->delete(1); ### delete customer
+
+// === Get response body
+$all = $customerService->all();
+// As an array
+json_decode($all->getBody(), true);
+// Or as an object
+json_decode($all->getBody());
 ```
 

@@ -12,6 +12,19 @@ use Jsdecena\Payjunction\Tests\BaseTestCase;
 
 class CustomerTest extends BaseTestCase
 {
+    private $customerService;
+
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        $handlerStack = HandlerStack::create($this->mock);
+        $client = new Client(['handler' => $handlerStack]);
+
+        $service = new PayjunctionService('test', 'test', 'test', false, $client);
+        $this->customerService = new CustomerService($service);
+    }
+
     /**
      * Mock the HTTP Response
      *
@@ -22,24 +35,20 @@ class CustomerTest extends BaseTestCase
     public function getMockResponse(Response ...$response): array
     {
         return [
-            new Response(200, [], $this->allCustomersMock()), // All customers
-
-            new Response(201, [], json_encode([
-                'customerId' => 1,
-                'uri' => 'https://api.payjunctionlabs.com/customers/1',
-                'firstName' => 'John',
-                'lastName' => 'Doe',
-                'created' => '2021-07-01T17:44:46Z',
-                'lastModified' => '2021-07-01T17:44:46Z'
-            ])), // Create customer
-
+            new Response(200, [], json_encode($this->allCustomersMock())), // All customers
+            new Response(201, [], json_encode($this->customerMock())), // Create customer
+            new Response(200, [], json_encode($this->customerMock())), // Show customer
+            new Response(200, [], json_encode($this->customerMock())), // Update customer
             new Response(202, [], json_encode([])) // Delete
         ];
     }
 
-    private function allCustomersMock()
+    /**
+     * @return array
+     */
+    private function allCustomersMock(): array
     {
-        return json_encode(['results' => [
+        return [
             [
                 'customerId' => 1,
                 'uri' => 'https://api.payjunctionlabs.com/customers/1',
@@ -56,22 +65,61 @@ class CustomerTest extends BaseTestCase
                 'created' => '2021-07-01T17:44:46Z',
                 'lastModified' => '2021-07-01T17:44:46Z'
             ]
-        ]]);
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    private function customerMock(): array
+    {
+        return [
+            'customerId' => 1,
+            'uri' => 'https://api.payjunctionlabs.com/customers/1',
+            'firstName' => 'John',
+            'lastName' => 'Doe',
+            'created' => '2021-07-01T17:44:46Z',
+            'lastModified' => '2021-07-01T17:44:46Z'
+        ];
     }
 
     /**
      * @test
      * @throws GuzzleException
      */
-    public function it_should_return_all_customers()
+    public function it_should_perform_customer_crud()
     {
-        $handlerStack = HandlerStack::create($this->mock);
-        $client = new Client(['handler' => $handlerStack]);
+        // Show all customers
+        $showCustomers = $this->customerService->all();
+        $decode1 = json_decode($showCustomers->getBody(), true);
+        $this->assertJsonStringEqualsJsonString(json_encode($this->allCustomersMock()), json_encode($decode1));
 
-        $service = new PayjunctionService('test', 'test', 'test', false, $client);
-        $customerService = new CustomerService($service);
-        $all = $customerService->all();
+        // Create customer
+        $createCustomer = $this->customerService->store($this->customerMock());
+        $decode2 = json_decode($createCustomer->getBody(), true);
 
-        $this->assertJson($this->allCustomersMock(), json_encode($all));
+        $this->assertJsonStringEqualsJsonString(json_encode($this->customerMock()), json_encode($decode2));
+        $this->assertSame(201, $createCustomer->getStatusCode());
+
+        // Show customer
+        $showCustomer = $this->customerService->show(1);
+        $decode3 = json_decode($showCustomer->getBody(), true);
+
+        $this->assertJsonStringEqualsJsonString(json_encode($this->customerMock()), json_encode($decode3));
+        $this->assertSame(200, $showCustomer->getStatusCode());
+
+        // Update customer
+        $updateCustomer = $this->customerService->update(1, $this->customerMock());
+        $update = json_decode($updateCustomer->getBody(), true);
+
+        $this->assertJsonStringEqualsJsonString(json_encode($this->customerMock()), json_encode($update));
+        $this->assertSame(200, $updateCustomer->getStatusCode());
+
+        // Delete customer
+        $deleteCustomer = $this->customerService->delete(1);
+        $delete = json_decode($deleteCustomer->getBody(), true);
+
+        $this->assertJsonStringEqualsJsonString(json_encode([]), json_encode($delete));
+        $this->assertSame(202, $deleteCustomer->getStatusCode());
     }
 }
