@@ -11,7 +11,7 @@ use Jsdecena\Payjunction\Tests\BaseTestCase;
 
 class TransactionTest extends BaseTestCase
 {
-    private TransactionService $transactionService;
+    protected TransactionService $transactionService;
 
     public function setUp(): void
     {
@@ -31,7 +31,6 @@ class TransactionTest extends BaseTestCase
             new Response(201, [], json_encode($this->transactionMock())), // Create transaction
             new Response(200, [], json_encode($this->transactionMock())), // Show transaction
             new Response(200, [], json_encode($this->transactionMock())), // Update transaction
-            new Response(202, [], json_encode([])), // Delete
         ];
     }
 
@@ -70,7 +69,9 @@ class TransactionTest extends BaseTestCase
         // Show all transactions
         $showCustomers = $this->transactionService->all();
         $showCustomersDecode = json_decode($showCustomers->getBody(), true);
+
         $this->assertJsonStringEqualsJsonString(json_encode([$this->transactionMock()]), json_encode($showCustomersDecode));
+        $this->assertSame(200, $showCustomers->getStatusCode());
 
         // Create transaction
         $createCustomer = $this->transactionService->store($this->transactionMock());

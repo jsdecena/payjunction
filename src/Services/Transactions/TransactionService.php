@@ -6,7 +6,10 @@ use Jsdecena\Payjunction\Services\PayjunctionService;
 
 class TransactionService
 {
-    private PayjunctionService $service;
+    /**
+     * @var PayjunctionService $service
+     */
+    protected PayjunctionService $service;
 
     /**
      * API Docs
@@ -14,7 +17,7 @@ class TransactionService
      */
 
     /** @var string $endpoint */
-    private string $endpoint = '/transactions';
+    protected string $endpoint = '/transactions';
 
     public function __construct(PayjunctionService $service)
     {
@@ -77,22 +80,5 @@ class TransactionService
         return $this->service->http->put($this->service->host . $this->endpoint . '/' . $id, [
             'form_params' => $data
         ]);
-    }
-
-    /**
-     * @param int $transactionId
-     * @param string $type eg. latest|thermal|fullpage
-     *
-     * @return \Psr\Http\Message\ResponseInterface
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     */
-    public function showReceipts(int $transactionId, string $type = 'latest'): \Psr\Http\Message\ResponseInterface
-    {
-        $query = $this->service->host . $this->endpoint . "/$transactionId/receipts/$type";
-
-        return $this
-            ->service
-            ->http
-            ->get($query, $this->service->headers);
     }
 }

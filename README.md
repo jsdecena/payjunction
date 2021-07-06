@@ -83,6 +83,8 @@ $customerAddressService->delete(1); ### delete customer address
 ## Transactions
 
 ```php
+use Jsdecena\Payjunction\Services\Transactions\Receipts\TransactionReceiptService;
+use Jsdecena\Payjunction\Services\Transactions\Notes\TransactionNoteService;
 use Jsdecena\Payjunction\Services\Transactions\TransactionService;
 use Jsdecena\Payjunction\Services\PayjunctionService;
 
@@ -102,7 +104,29 @@ $transactionService->show(1); ### show customer transaction
 $transactionService->update(1, ['address' => 'Foo bar']); ### update customer transaction
 
 // Get the receipt
+$transactionReceiptService = new TransactionReceiptService($service);
 $transactionId = 123;
-$transactionService->showReceipts($transactionId);
+$transactionReceiptService->fromTransaction($transactionId);
+
+// Notes
+$transactionNoteService = new TransactionNoteService($service);
+$transactionId = 123;
+$transactionNoteService->allNotes($transactionId);
+
+$noteData = [
+    'noteId' => 1,
+    'uri' => "https://api.payjunctionlabs.com/customers/1/notes/1",
+    'note' => 'This is a note',
+    'created' => '2021-07-01T17:44:46Z',
+    'lastModified' => '2021-07-01T17:44:46Z'
+];
+$transactionNoteService->storeNote($transactionId, $noteData);
+
+$noteId = 456;
+$transactionNoteService->showNote($transactionId, $noteId);
+
+$transactionNoteService->updateNote($transactionId, $noteId, $noteData);
+
+$transactionNoteService->deleteNote($transactionId, $noteId);
 ```
 
