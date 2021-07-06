@@ -21,7 +21,7 @@ class TransactionNoteTest extends BaseTestCase
         $client = new Client(['handler' => $handlerStack]);
 
         $service = new PayjunctionService('test', 'test', 'test', false, $client);
-        $this->transactionNoteService = new TransactionNoteService($service);
+        $this->transactionNoteService = new TransactionNoteService(1, $service);
     }
 
     public function getMockResponse(Response ...$response): array
@@ -53,35 +53,35 @@ class TransactionNoteTest extends BaseTestCase
     public function it_should_perform_transaction_notes_crud()
     {
         // Show all transaction notes
-        $transactionReceipts = $this->transactionNoteService->allNotes(1);
+        $transactionReceipts = $this->transactionNoteService->all();
         $transactionReceiptsDecode = json_decode($transactionReceipts->getBody(), true);
 
         $this->assertJsonStringEqualsJsonString(json_encode([$this->transactionNoteMock()]), json_encode($transactionReceiptsDecode));
         $this->assertSame(200, $transactionReceipts->getStatusCode());
 
         // Note
-        $transactionReceipts = $this->transactionNoteService->showNote(1, 1);
+        $transactionReceipts = $this->transactionNoteService->show(1);
         $transactionReceiptsDecode = json_decode($transactionReceipts->getBody(), true);
 
         $this->assertJsonStringEqualsJsonString(json_encode($this->transactionNoteMock()), json_encode($transactionReceiptsDecode));
         $this->assertSame(200, $transactionReceipts->getStatusCode());
 
         // Note update
-        $transactionReceipts = $this->transactionNoteService->updateNote(1, 1, $this->transactionNoteMock());
+        $transactionReceipts = $this->transactionNoteService->update(1, $this->transactionNoteMock());
         $transactionReceiptsDecode = json_decode($transactionReceipts->getBody(), true);
 
         $this->assertJsonStringEqualsJsonString(json_encode($this->transactionNoteMock()), json_encode($transactionReceiptsDecode));
         $this->assertSame(200, $transactionReceipts->getStatusCode());
 
         // Note create
-        $transactionReceipts = $this->transactionNoteService->storeNote(1, $this->transactionNoteMock());
+        $transactionReceipts = $this->transactionNoteService->store( $this->transactionNoteMock());
         $transactionReceiptsDecode = json_decode($transactionReceipts->getBody(), true);
 
         $this->assertJsonStringEqualsJsonString(json_encode($this->transactionNoteMock()), json_encode($transactionReceiptsDecode));
         $this->assertSame(201, $transactionReceipts->getStatusCode());
 
         // Note delete
-        $transactionReceipts = $this->transactionNoteService->deleteNote(1, 1);
+        $transactionReceipts = $this->transactionNoteService->delete( 1);
         $transactionReceiptsDecode = json_decode($transactionReceipts->getBody(), true);
 
         $this->assertJsonStringEqualsJsonString(json_encode([]), json_encode($transactionReceiptsDecode));

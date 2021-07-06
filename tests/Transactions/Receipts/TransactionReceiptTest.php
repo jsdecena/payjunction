@@ -21,7 +21,7 @@ class TransactionReceiptTest extends BaseTestCase
         $client = new Client(['handler' => $handlerStack]);
 
         $service = new PayjunctionService('test', 'test', 'test', false, $client);
-        $this->transactionReceiptService = new TransactionReceiptService($service);
+        $this->transactionReceiptService = new TransactionReceiptService(1, $service);
     }
 
     public function getMockResponse(Response ...$response): array
@@ -50,7 +50,7 @@ class TransactionReceiptTest extends BaseTestCase
     public function it_should_get_all_transaction_receipts()
     {
         // Show all transaction receipts
-        $transactionReceipts = $this->transactionReceiptService->fromTransaction(1);
+        $transactionReceipts = $this->transactionReceiptService->all();
         $transactionReceiptsDecode = json_decode($transactionReceipts->getBody(), true);
 
         $this->assertJsonStringEqualsJsonString(json_encode([$this->transactionReceiptMock()]), json_encode($transactionReceiptsDecode));

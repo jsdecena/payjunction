@@ -2,22 +2,36 @@
 
 namespace Jsdecena\Payjunction\Services\Transactions\Notes;
 
-use Jsdecena\Payjunction\Services\Transactions\TransactionService;
+use Jsdecena\Payjunction\Services\PayjunctionService;
+use Jsdecena\Payjunction\Services\Transactions\BaseTransactionService;
 
-class TransactionNoteService extends TransactionService
+class TransactionNoteService extends BaseTransactionService
 {
-    private string $noteEndpoint = 'notes';
+    private PayjunctionService $service;
+
+    private int $transactionId;
 
     /**
-     * @param int $transactionId
+     * API Docs
+     * @url https://developer.payjunction.com/hc/en-us/articles/216543507-POST-customers-customerId-notes
+     */
+    private string $noteEndpoint = 'notes';
+
+    public function __construct(int $transactionId, PayjunctionService $service)
+    {
+        $this->transactionId = $transactionId;
+        $this->service = $service;
+    }
+
+    /**
      * @param string $type eg. latest|thermal|fullpage
      *
      * @return \Psr\Http\Message\ResponseInterface
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function allNotes(int $transactionId, string $type = 'latest'): \Psr\Http\Message\ResponseInterface
+    public function all(string $type = 'latest'): \Psr\Http\Message\ResponseInterface
     {
-        $query = $this->service->host . $this->endpoint . "/$transactionId/$this->noteEndpoint";
+        $query = $this->service->host . $this->endpoint . "/$this->transactionId/$this->noteEndpoint";
 
         return $this
             ->service
@@ -28,15 +42,14 @@ class TransactionNoteService extends TransactionService
     /**
      * Create a transaction
      *
-     * @param int $transactionId
      * @param array $data
      *
      * @return \Psr\Http\Message\ResponseInterface
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function storeNote(int $transactionId, array $data): \Psr\Http\Message\ResponseInterface
+    public function store(array $data): \Psr\Http\Message\ResponseInterface
     {
-        return $this->service->http->post($this->service->host . $this->endpoint . "/$transactionId/$this->noteEndpoint", [
+        return $this->service->http->post($this->service->host . $this->endpoint . "/$this->transactionId/$this->noteEndpoint", [
             'form_params' => $data
         ]);
     }
@@ -44,30 +57,28 @@ class TransactionNoteService extends TransactionService
     /**
      * Get the information of a specific transaction note
      *
-     * @param int $transactionId
      * @param int $noteId
      *
      * @return \Psr\Http\Message\ResponseInterface
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function showNote(int $transactionId, int $noteId): \Psr\Http\Message\ResponseInterface
+    public function show(int $noteId): \Psr\Http\Message\ResponseInterface
     {
-        return $this->service->http->get($this->service->host . $this->endpoint . "/$transactionId/$this->noteEndpoint/$noteId");
+        return $this->service->http->get($this->service->host . $this->endpoint . "/$this->transactionId/$this->noteEndpoint/$noteId");
     }
 
     /**
      * Get the information of a specific transaction note
      *
-     * @param int $transactionId
      * @param int $noteId
      * @param array $data
      *
      * @return \Psr\Http\Message\ResponseInterface
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function updateNote(int $transactionId, int $noteId, array $data): \Psr\Http\Message\ResponseInterface
+    public function update(int $noteId, array $data): \Psr\Http\Message\ResponseInterface
     {
-        return $this->service->http->put($this->service->host . "/$transactionId/$this->noteEndpoint/$noteId", [
+        return $this->service->http->put($this->service->host . "/$this->transactionId/$this->noteEndpoint/$noteId", [
             'form_params' => $data
         ]);
     }
@@ -75,14 +86,13 @@ class TransactionNoteService extends TransactionService
     /**
      * Get the information of a specific transaction note
      *
-     * @param int $transactionId
      * @param int $noteId
      *
      * @return \Psr\Http\Message\ResponseInterface
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function deleteNote(int $transactionId, int $noteId): \Psr\Http\Message\ResponseInterface
+    public function delete(int $noteId): \Psr\Http\Message\ResponseInterface
     {
-        return $this->service->http->delete($this->service->host . $this->endpoint . "/$transactionId/$this->noteEndpoint/$noteId");
+        return $this->service->http->delete($this->service->host . $this->endpoint . "/$this->transactionId/$this->noteEndpoint/$noteId");
     }
 }

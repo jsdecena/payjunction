@@ -104,14 +104,13 @@ $transactionService->show(1); ### show customer transaction
 $transactionService->update(1, ['address' => 'Foo bar']); ### update customer transaction
 
 // Get the receipt
-$transactionReceiptService = new TransactionReceiptService($service);
 $transactionId = 123;
-$transactionReceiptService->fromTransaction($transactionId);
+$transactionReceiptService = new TransactionReceiptService($transactionId, $service);
+$transactionReceiptService->all();
 
 // Notes
-$transactionNoteService = new TransactionNoteService($service);
-$transactionId = 123;
-$transactionNoteService->allNotes($transactionId);
+$transactionNoteService = new TransactionNoteService($transactionId, $service);
+$transactionNoteService->all();
 $noteData = [
     'noteId' => 1,
     'uri' => "https://api.payjunctionlabs.com/customers/1/notes/1",
@@ -119,10 +118,10 @@ $noteData = [
     'created' => '2021-07-01T17:44:46Z',
     'lastModified' => '2021-07-01T17:44:46Z'
 ];
-$transactionNoteService->storeNote($transactionId, $noteData);
+$transactionNoteService->store($noteData);
 $noteId = 456;
-$transactionNoteService->showNote($transactionId, $noteId);
-$transactionNoteService->updateNote($transactionId, $noteId, $noteData);
-$transactionNoteService->deleteNote($transactionId, $noteId);
+$transactionNoteService->show($noteId);
+$transactionNoteService->update($noteId, $noteData);
+$transactionNoteService->delete($noteId);
 ```
 
