@@ -58,7 +58,9 @@ class CustomerTest extends BaseTestCase
         // Show all customers
         $showCustomers = $this->customerService->all();
         $showCustomersDecode = json_decode($showCustomers->getBody(), true);
+
         $this->assertJsonStringEqualsJsonString(json_encode([$this->customerMock()]), json_encode($showCustomersDecode));
+        $this->assertSame(200, $showCustomers->getStatusCode());
 
         // Create customer
         $createCustomer = $this->customerService->store($this->customerMock());

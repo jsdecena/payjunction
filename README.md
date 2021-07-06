@@ -41,7 +41,7 @@ json_decode($all->getBody());
 ## Customer notes
 
 ```php
-use Jsdecena\Payjunction\Services\Customers\CustomerNoteService;
+use Jsdecena\Payjunction\Services\Customers\Notes\CustomerNoteService;
 use Jsdecena\Payjunction\Services\PayjunctionService;
 
 $service = new PayjunctionService('<your-username>', '<your-password>', '<your-app-key>');
@@ -59,7 +59,7 @@ $customerNoteService->delete(1); ### delete customer note
 ## Customer addresses
 
 ```php
-use Jsdecena\Payjunction\Services\Customers\CustomerAddressService;
+use Jsdecena\Payjunction\Services\Customers\Addresses\CustomerAddressService;
 use Jsdecena\Payjunction\Services\PayjunctionService;
 
 $service = new PayjunctionService('<your-username>', '<your-password>', '<your-app-key>');
@@ -125,3 +125,44 @@ $transactionNoteService->update($noteId, $noteData);
 $transactionNoteService->delete($noteId);
 ```
 
+## Invoices
+
+```php
+use Jsdecena\Payjunction\Services\Invoices\InvoiceService;
+use Jsdecena\Payjunction\Services\PayjunctionService;
+use Jsdecena\Payjunction\Services\Invoices\Actions\InvoiceVoidService;
+use Jsdecena\Payjunction\Services\Invoices\Actions\InvoiceReopenService;
+use Jsdecena\Payjunction\Services\Invoices\Actions\InvoiceReminderService;
+
+$service = new PayjunctionService('<your-username>', '<your-password>', '<your-app-key>');
+$invoiceService = new InvoiceService($service);
+
+$invoiceService->all(); ### Get all customer invoices
+$invoiceData = [
+    "amountBase" => "1.99",
+    "customerEmail" => "jdoe@payjunction.com",
+    "customerFirstName" => "John",
+    "customerIdentifier" => "customer-id",
+    "customerLastName" => "Doe",
+    "invoiceId" => "e321790e-c030-4501-aa99-09e35158c1a6",
+    "invoiceNumber" => "TO-123456",
+    "message" => "Invoice for takeout order #123456",
+    "terminalId" => 1
+];
+$invoiceService->store($invoiceData); ### create customer invoice
+
+$invoiceId = 1;
+$invoiceService->show($invoiceId); ### show customer invoice
+
+## VOID
+$invoiceService = new InvoiceVoidService($invoiceId, $service);
+$invoiceService->void();
+
+## REOPEN
+$invoiceService = new InvoiceReopenService($invoiceId, $service);
+$invoiceService->reopen();
+
+## SEND EMAIL REMINDER
+$invoiceService = new InvoiceReminderService($invoiceId, $service);
+$invoiceService->send();
+```
