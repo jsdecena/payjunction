@@ -3,7 +3,7 @@
 [![master](https://github.com/jsdecena/payjunction/actions/workflows/master.yml/badge.svg?branch=master)](https://github.com/jsdecena/payjunction/actions/workflows/master.yml)
 [![codecov](https://codecov.io/gh/jsdecena/payjunction/branch/main/graph/badge.svg?token=MaEX5kmM8N)](https://codecov.io/gh/jsdecena/payjunction)
 
-Fully tested, un-official [Payjunction](https://www.payjunction.com) SDK for PHP (WIP)
+Fully tested, un-official [Payjunction](https://www.payjunction.com) SDK for PHP
 
 # Requirements
 PHP >= v7.3
