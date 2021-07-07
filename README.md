@@ -22,7 +22,8 @@ composer require jsdecena/payjunction
 use Jsdecena\Payjunction\Services\Customers\CustomerService;
 use Jsdecena\Payjunction\Services\PayjunctionService;
 
-$service = new PayjunctionService('<your-username>', '<your-password>', '<your-app-key>');
+// If you need to make it PRODUCTION mode, set the 4th param to TRUE
+$service = new PayjunctionService('<your-username>', '<your-password>', '<your-app-key>', false);
 $customerService = new CustomerService($service);
 
 $customerService->all(); ### Get all customers
