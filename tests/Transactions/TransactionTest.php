@@ -55,6 +55,8 @@ class TransactionTest extends BaseTestCase
     /**
      * @test
      * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @covers TransactionService::all
      */
     public function it_should_perform_transactions_crud()
     {

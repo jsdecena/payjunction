@@ -41,6 +41,8 @@ class TransactionNoteTest extends BaseTestCase
     /**
      * @test
      * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @covers TransactionNoteService::all
      */
     public function it_should_perform_transaction_notes_crud()
     {

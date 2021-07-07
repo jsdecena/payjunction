@@ -53,6 +53,10 @@ class InvoiceActionsTest extends BaseTestCase
     /**
      * @test
      * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @covers InvoiceVoidService::void
+     * @covers InvoiceReopenService::reopen
+     * @covers InvoiceReminderService::send
      */
     public function it_should_perform_invoice_actions()
     {

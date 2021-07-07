@@ -52,6 +52,8 @@ class CustomerTest extends BaseTestCase
     /**
      * @test
      * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @covers CustomerService::all
      */
     public function it_should_perform_customer_crud()
     {

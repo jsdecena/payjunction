@@ -44,6 +44,8 @@ class CustomerAddressTest extends BaseTestCase
     /**
      * @test
      * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @covers CustomerAddressService
      */
     public function it_should_perform_customer_address_crud()
     {

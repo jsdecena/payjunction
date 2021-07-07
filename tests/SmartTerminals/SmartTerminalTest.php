@@ -50,6 +50,8 @@ class SmartTerminalTest extends BaseTestCase
     /**
      * @test
      * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @covers SmartTerminalService::all
      */
     public function it_should_perform_smart_terminal_operations()
     {

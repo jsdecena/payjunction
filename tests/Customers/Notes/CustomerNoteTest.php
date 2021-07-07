@@ -43,6 +43,8 @@ class CustomerNoteTest extends BaseTestCase
 
     /** @test
      * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @covers CustomerNoteService::all
      */
     public function it_should_perform_customer_notes_crud()
     {
