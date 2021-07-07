@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1625620077">
+  <project timestamp="1625620077">
+    <file name="/home/jsdecena/playground/laravel/packages/jsdecena/payjunction/src/PayjunctionProvider.php">
+      <class name="Jsdecena\Payjunction\PayjunctionProvider" namespace="global">
+        <metrics complexity="2" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="0" elements="4" coveredelements="0"/>
+      </class>
+      <line num="13" type="method" name="boot" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="16" type="stmt" count="0"/>
+      <line num="22" type="method" name="register" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="25" type="stmt" count="0"/>
+      <metrics loc="26" ncloc="18" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="0" elements="4" coveredelements="0"/>
+    </file>
+    <file name="/home/jsdecena/playground/laravel/packages/jsdecena/payjunction/src/Services/BaseService.php">
+      <class name="Jsdecena\Payjunction\Services\BaseService" namespace="global">
+        <metrics complexity="4" methods="3" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="8" elements="12" coveredelements="10"/>
+      </class>
+      <line num="14" type="method" name="getHeaders" visibility="protected" complexity="1" crap="1" count="9"/>
+      <line num="18" type="stmt" count="9"/>
+      <line num="19" type="stmt" count="9"/>
+      <line num="31" type="method" name="setConfigurations" visibility="protected" complexity="1" crap="1" count="9"/>
+      <line num="33" type="stmt" count="9"/>
+      <line num="34" type="stmt" count="9"/>
+      <line num="35" type="stmt" count="9"/>
+      <line num="36" type="stmt" count="9"/>
+      <line num="43" type="method" name="getHost" visibility="protected" complexity="2" crap="2.15" count="9"/>
+      <line num="45" type="stmt" count="9"/>
+      <line num="46" type="stmt" count="0"/>
+      <line num="48" type="stmt" count="9"/>
+      <metrics loc="50" ncloc="35" classes="1" methods="3" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="8" elements="12" coveredelements="10"/>
+    </file>
+    <file name="/home/jsdecena/playground/laravel/packages/jsdecena/payjunction/src/Services/Customers/Addresses/CustomerAddressService.php">
+      <class name="Jsdecena\Payjunction\Services\Customers\Addresses\CustomerAddressService" namespace="global">
+        <metrics complexity="8" methods="7" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="18" coveredstatements="18" elements="25" coveredelements="25"/>
+      </class>
+      <line num="21" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="23" type="stmt" count="1"/>
+      <line num="24" type="stmt" count="1"/>
+      <line num="25" type="stmt" count="1"/>
+      <line num="34" type="method" name="buildUrl" visibility="public" complexity="2" crap="2" count="1"/>
+      <line num="36" type="stmt" count="1"/>
+      <line num="37" type="stmt" count="1"/>
+      <line num="38" type="stmt" count="1"/>
+      <line num="40" type="stmt" count="1"/>
+      <line num="47" type="method" name="all" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="49" type="stmt" count="1"/>
+      <line num="50" type="stmt" count="1"/>
+      <line num="53" type="stmt" count="1"/>
+      <line num="54" type="stmt" count="1"/>
+      <line num="55" type="stmt" count="1"/>
+      <line num="66" type="method" name="store" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="68" type="stmt" count="1"/>
+      <line num="69" type="stmt" count="1"/>
+      <line num="81" type="method" name="show" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="83" type="stmt" count="1"/>
+      <line num="95" type="method" name="update" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="97" type="stmt" count="1"/>
+      <line num="98" type="stmt" count="1"/>
+      <line num="110" type="method" name="delete" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="112" type="stmt" count="1"/>
+      <metrics loc="114" ncloc="66" classes="1" methods="7" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="18" coveredstatements="18" elements="25" coveredelements="25"/>
+    </file>
+    <file name="/home/jsdecena/playground/laravel/packages/jsdecena/payjunction/src/Services/Customers/BaseCustomerService.php">
+      <class name="Jsdecena\Payjunction\Services\Customers\BaseCustomerService" namespace="global">
+        <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </class>
+      <metrics loc="9" ncloc="8" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <file name="/home/jsdecena/playground/laravel/packages/jsdecena/payjunction/src/Services/Customers/CustomerService.php">
+      <class name="Jsdecena\Payjunction\Services\Customers\CustomerService" namespace="global">
+        <metrics complexity="6" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="12" elements="18" coveredelements="18"/>
+      </class>
+      <line num="19" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="21" type="stmt" count="1"/>
+      <line num="22" type="stmt" count="1"/>
+      <line num="28" type="method" name="all" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="30" type="stmt" count="1"/>
+      <line num="33" type="stmt" count="1"/>
+      <line num="34" type="stmt" count="1"/>
+      <line num="35" type="stmt" count="1"/>
+      <line num="46" type="method" name="store" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="48" type="stmt" count="1"/>
+      <line num="49" type="stmt" count="1"/>
+      <line num="61" type="method" name="show" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="63" type="stmt" count="1"/>
+      <line num="75" type="method" name="update" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="77" type="stmt" count="1"/>
+      <line num="78" type="stmt" count="1"/>
+      <line num="90" type="method" name="delete" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="92" type="stmt" count="1"/>
+      <metrics loc="94" ncloc="52" classes="1" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="12" elements="18" coveredelements="18"/>
+    </file>
+    <file name="/home/jsdecena/playground/laravel/packages/jsdecena/payjunction/src/Services/Customers/Notes/CustomerNoteService.php">
+      <class name="Jsdecena\Payjunction\Services\Customers\Notes\CustomerNoteService" namespace="global">
+        <metrics complexity="8" methods="7" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="18" coveredstatements="18" elements="25" coveredelements="25"/>
+      </class>
+      <line num="22" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="24" type="stmt" count="1"/>
+      <line num="25" type="stmt" count="1"/>
+      <line num="26" type="stmt" count="1"/>
+      <line num="35" type="method" name="buildUrl" visibility="public" complexity="2" crap="2" count="1"/>
+      <line num="37" type="stmt" count="1"/>
+      <line num="38" type="stmt" count="1"/>
+      <line num="39" type="stmt" count="1"/>
+      <line num="41" type="stmt" count="1"/>
+      <line num="48" type="method" name="all" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="50" type="stmt" count="1"/>
+      <line num="51" type="stmt" count="1"/>
+      <line num="54" type="stmt" count="1"/>
+      <line num="55" type="stmt" count="1"/>
+      <line num="56" type="stmt" count="1"/>
+      <line num="67" type="method" name="store" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="69" type="stmt" count="1"/>
+      <line num="70" type="stmt" count="1"/>
+      <line num="82" type="method" name="show" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="84" type="stmt" count="1"/>
+      <line num="96" type="method" name="update" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="98" type="stmt" count="1"/>
+      <line num="99" type="stmt" count="1"/>
+      <line num="111" type="method" name="delete" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="113" type="stmt" count="1"/>
+      <metrics loc="115" ncloc="66" classes="1" methods="7" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="18" coveredstatements="18" elements="25" coveredelements="25"/>
+    </file>
+    <file name="/home/jsdecena/playground/laravel/packages/jsdecena/payjunction/src/Services/Invoices/Actions/InvoiceFilesService.php">
+      <class name="Jsdecena\Payjunction\Services\Invoices\Actions\InvoiceFilesService" namespace="global">
+        <metrics complexity="2" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="0" elements="6" coveredelements="0"/>
+      </class>
+      <line num="16" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="18" type="stmt" count="0"/>
+      <line num="19" type="stmt" count="0"/>
+      <line num="29" type="method" name="store" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="31" type="stmt" count="0"/>
+      <line num="32" type="stmt" count="0"/>
+      <metrics loc="35" ncloc="23" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="0" elements="6" coveredelements="0"/>
+    </file>
+    <file name="/home/jsdecena/playground/laravel/packages/jsdecena/payjunction/src/Services/Invoices/Actions/InvoiceReminderService.php">
+      <class name="Jsdecena\Payjunction\Services\Invoices\Actions\InvoiceReminderService" namespace="global">
+        <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="6" coveredelements="6"/>
+      </class>
+      <line num="18" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="20" type="stmt" count="1"/>
+      <line num="21" type="stmt" count="1"/>
+      <line num="22" type="stmt" count="1"/>
+      <line num="32" type="method" name="send" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="34" type="stmt" count="1"/>
+      <metrics loc="36" ncloc="24" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="6" coveredelements="6"/>
+    </file>
+    <file name="/home/jsdecena/playground/laravel/packages/jsdecena/payjunction/src/Services/Invoices/Actions/InvoiceReopenService.php">
+      <class name="Jsdecena\Payjunction\Services\Invoices\Actions\InvoiceReopenService" namespace="global">
+        <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="6" coveredelements="6"/>
+      </class>
+      <line num="18" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="20" type="stmt" count="1"/>
+      <line num="21" type="stmt" count="1"/>
+      <line num="22" type="stmt" count="1"/>
+      <line num="30" type="method" name="reopen" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="32" type="stmt" count="1"/>
+      <metrics loc="34" ncloc="24" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="6" coveredelements="6"/>
+    </file>
+    <file name="/home/jsdecena/playground/laravel/packages/jsdecena/payjunction/src/Services/Invoices/Actions/InvoiceVoidService.php">
+      <class name="Jsdecena\Payjunction\Services\Invoices\Actions\InvoiceVoidService" namespace="global">
+        <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="6" coveredelements="6"/>
+      </class>
+      <line num="18" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="20" type="stmt" count="1"/>
+      <line num="21" type="stmt" count="1"/>
+      <line num="22" type="stmt" count="1"/>
+      <line num="30" type="method" name="void" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="32" type="stmt" count="1"/>
+      <metrics loc="34" ncloc="24" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="6" coveredelements="6"/>
+    </file>
+    <file name="/home/jsdecena/playground/laravel/packages/jsdecena/payjunction/src/Services/Invoices/BaseInvoiceService.php">
+      <class name="Jsdecena\Payjunction\Services\Invoices\BaseInvoiceService" namespace="global">
+        <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </class>
+      <metrics loc="9" ncloc="8" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <file name="/home/jsdecena/playground/laravel/packages/jsdecena/payjunction/src/Services/Invoices/InvoiceService.php">
+      <class name="Jsdecena\Payjunction\Services\Invoices\InvoiceService" namespace="global">
+        <metrics complexity="4" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="9" elements="13" coveredelements="13"/>
+      </class>
+      <line num="15" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="17" type="stmt" count="1"/>
+      <line num="18" type="stmt" count="1"/>
+      <line num="24" type="method" name="all" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="26" type="stmt" count="1"/>
+      <line num="29" type="stmt" count="1"/>
+      <line num="30" type="stmt" count="1"/>
+      <line num="31" type="stmt" count="1"/>
+      <line num="42" type="method" name="store" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="44" type="stmt" count="1"/>
+      <line num="45" type="stmt" count="1"/>
+      <line num="57" type="method" name="show" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="59" type="stmt" count="1"/>
+      <metrics loc="61" ncloc="37" classes="1" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="9" elements="13" coveredelements="13"/>
+    </file>
+    <file name="/home/jsdecena/playground/laravel/packages/jsdecena/payjunction/src/Services/PayjunctionService.php">
+      <class name="Jsdecena\Payjunction\Services\PayjunctionService" namespace="global">
+        <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
+      </class>
+      <line num="19" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="9"/>
+      <line num="21" type="stmt" count="9"/>
+      <line num="22" type="stmt" count="9"/>
+      <line num="23" type="stmt" count="9"/>
+      <line num="24" type="stmt" count="9"/>
+      <line num="25" type="stmt" count="9"/>
+      <metrics loc="26" ncloc="22" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
+    </file>
+    <file name="/home/jsdecena/playground/laravel/packages/jsdecena/payjunction/src/Services/SmartTerminals/SmartTerminalService.php">
+      <class name="Jsdecena\Payjunction\Services\SmartTerminals\SmartTerminalService" namespace="global">
+        <metrics complexity="9" methods="9" coveredmethods="9" conditionals="0" coveredconditionals="0" statements="15" coveredstatements="15" elements="24" coveredelements="24"/>
+      </class>
+      <line num="24" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="26" type="stmt" count="1"/>
+      <line num="27" type="stmt" count="1"/>
+      <line num="28" type="stmt" count="1"/>
+      <line num="36" type="method" name="getSmartTerminals" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="38" type="stmt" count="1"/>
+      <line num="47" type="method" name="getTerminals" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="49" type="stmt" count="1"/>
+      <line num="60" type="method" name="requestPayment" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="62" type="stmt" count="1"/>
+      <line num="63" type="stmt" count="1"/>
+      <line num="75" type="method" name="requestSignature" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="77" type="stmt" count="1"/>
+      <line num="78" type="stmt" count="1"/>
+      <line num="90" type="method" name="requestPrompt" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="92" type="stmt" count="1"/>
+      <line num="93" type="stmt" count="1"/>
+      <line num="105" type="method" name="main" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="107" type="stmt" count="1"/>
+      <line num="108" type="stmt" count="1"/>
+      <line num="120" type="method" name="getRequests" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="122" type="stmt" count="1"/>
+      <line num="133" type="method" name="getSignatures" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="135" type="stmt" count="1"/>
+      <metrics loc="137" ncloc="69" classes="1" methods="9" coveredmethods="9" conditionals="0" coveredconditionals="0" statements="15" coveredstatements="15" elements="24" coveredelements="24"/>
+    </file>
+    <file name="/home/jsdecena/playground/laravel/packages/jsdecena/payjunction/src/Services/Transactions/BaseTransactionService.php">
+      <class name="Jsdecena\Payjunction\Services\Transactions\BaseTransactionService" namespace="global">
+        <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </class>
+      <metrics loc="9" ncloc="8" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <file name="/home/jsdecena/playground/laravel/packages/jsdecena/payjunction/src/Services/Transactions/Notes/TransactionNoteService.php">
+      <class name="Jsdecena\Payjunction\Services\Transactions\Notes\TransactionNoteService" namespace="global">
+        <metrics complexity="6" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="13" elements="19" coveredelements="19"/>
+      </class>
+      <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="22" type="stmt" count="1"/>
+      <line num="23" type="stmt" count="1"/>
+      <line num="24" type="stmt" count="1"/>
+      <line num="32" type="method" name="all" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="34" type="stmt" count="1"/>
+      <line num="37" type="stmt" count="1"/>
+      <line num="38" type="stmt" count="1"/>
+      <line num="39" type="stmt" count="1"/>
+      <line num="50" type="method" name="store" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="52" type="stmt" count="1"/>
+      <line num="53" type="stmt" count="1"/>
+      <line num="65" type="method" name="show" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="67" type="stmt" count="1"/>
+      <line num="79" type="method" name="update" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="81" type="stmt" count="1"/>
+      <line num="82" type="stmt" count="1"/>
+      <line num="94" type="method" name="delete" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="96" type="stmt" count="1"/>
+      <metrics loc="98" ncloc="55" classes="1" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="13" elements="19" coveredelements="19"/>
+    </file>
+    <file name="/home/jsdecena/playground/laravel/packages/jsdecena/payjunction/src/Services/Transactions/Receipts/TransactionReceiptService.php">
+      <class name="Jsdecena\Payjunction\Services\Transactions\Receipts\TransactionReceiptService" namespace="global">
+        <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="9" coveredelements="9"/>
+      </class>
+      <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="22" type="stmt" count="1"/>
+      <line num="23" type="stmt" count="1"/>
+      <line num="24" type="stmt" count="1"/>
+      <line num="32" type="method" name="all" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="34" type="stmt" count="1"/>
+      <line num="37" type="stmt" count="1"/>
+      <line num="38" type="stmt" count="1"/>
+      <line num="39" type="stmt" count="1"/>
+      <metrics loc="41" ncloc="31" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="9" coveredelements="9"/>
+    </file>
+    <file name="/home/jsdecena/playground/laravel/packages/jsdecena/payjunction/src/Services/Transactions/TransactionService.php">
+      <class name="Jsdecena\Payjunction\Services\Transactions\TransactionService" namespace="global">
+        <metrics complexity="5" methods="5" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="11" elements="16" coveredelements="16"/>
+      </class>
+      <line num="22" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="24" type="stmt" count="1"/>
+      <line num="25" type="stmt" count="1"/>
+      <line num="31" type="method" name="all" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="33" type="stmt" count="1"/>
+      <line num="36" type="stmt" count="1"/>
+      <line num="37" type="stmt" count="1"/>
+      <line num="38" type="stmt" count="1"/>
+      <line num="49" type="method" name="store" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="51" type="stmt" count="1"/>
+      <line num="52" type="stmt" count="1"/>
+      <line num="64" type="method" name="show" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="66" type="stmt" count="1"/>
+      <line num="78" type="method" name="update" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="80" type="stmt" count="1"/>
+      <line num="81" type="stmt" count="1"/>
+      <metrics loc="84" ncloc="47" classes="1" methods="5" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="11" elements="16" coveredelements="16"/>
+    </file>
+    <metrics files="18" loc="1012" ncloc="617" classes="15" methods="60" coveredmethods="55" conditionals="0" coveredconditionals="0" statements="135" coveredstatements="128" elements="195" coveredelements="183"/>
+  </project>
+</coverage>
