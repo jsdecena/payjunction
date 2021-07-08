@@ -4,6 +4,7 @@ namespace Jsdecena\Payjunction\Tests\Customers;
 
 use GuzzleHttp\Psr7\Response;
 use Jsdecena\Payjunction\Services\Customers\CustomerService;
+use Jsdecena\Payjunction\Services\Customers\Exceptions\CustomerException;
 use Jsdecena\Payjunction\Tests\BaseTestCase;
 
 class CustomerTest extends BaseTestCase
@@ -31,6 +32,7 @@ class CustomerTest extends BaseTestCase
             new Response(200, [], json_encode($this->customerMock())), // Show customer
             new Response(200, [], json_encode($this->customerMock())), // Update customer
             new Response(202, [], json_encode([])), // Delete
+            new Response(422, [], json_encode([])), // Create user error
         ];
     }
 
@@ -52,9 +54,10 @@ class CustomerTest extends BaseTestCase
 
     /**
      * @test
+     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Jsdecena\Payjunction\Services\Customers\Exceptions\CustomerException
-     * @coversNothing \Jsdecena\Payjunction\Services\Customers\CustomerService
+     * @covers \Jsdecena\Payjunction\Services\Customers\CustomerService
      * @covers \Jsdecena\Payjunction\Services\BaseService
      */
     public function it_should_perform_customer_crud()
@@ -93,5 +96,11 @@ class CustomerTest extends BaseTestCase
 
         $this->assertJsonStringEqualsJsonString(json_encode([]), json_encode($deleteCustomerDecode));
         $this->assertSame(202, $deleteCustomer->getStatusCode());
+
+        $this->expectException(CustomerException::class);
+        $this->expectErrorMessage('["The email field is required.","The first name field is required.","The last name field is required."]');
+
+        // Create customer error
+        $this->customerService->store([]);
     }
 }

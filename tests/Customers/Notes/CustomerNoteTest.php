@@ -4,6 +4,7 @@ namespace Jsdecena\Payjunction\Tests\Customers\Notes;
 
 use GuzzleHttp\Psr7\Response;
 use Jsdecena\Payjunction\Services\Customers\Notes\CustomerNoteService;
+use Jsdecena\Payjunction\Services\Customers\Notes\Exceptions\CustomerNoteException;
 use Jsdecena\Payjunction\Tests\BaseTestCase;
 
 class CustomerNoteTest extends BaseTestCase
@@ -38,6 +39,7 @@ class CustomerNoteTest extends BaseTestCase
             new Response(200, [], json_encode($this->customerNote())), // Show customer note
             new Response(200, [], json_encode($this->customerNote())), // Update customer note
             new Response(202, [], json_encode([])), // Delete
+            new Response(422, [], json_encode([])), // Create customer note error
         ];
     }
 
@@ -83,5 +85,11 @@ class CustomerNoteTest extends BaseTestCase
 
         $this->assertJsonStringEqualsJsonString(json_encode([]), json_encode($deleteCustomerNoteDecode));
         $this->assertSame(202, $deleteCustomerNote->getStatusCode());
+
+        $this->expectException(CustomerNoteException::class);
+        $this->expectErrorMessage('["The note field is required."');
+
+        // Create customer note error
+        $this->customerNoteService->store([]);
     }
 }

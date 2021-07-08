@@ -3,6 +3,7 @@
 namespace Jsdecena\Payjunction\Services\Customers\Notes;
 
 use Jsdecena\Payjunction\Services\Customers\BaseCustomerService;
+use Jsdecena\Payjunction\Services\Customers\Notes\Exceptions\CustomerNoteException;
 use Jsdecena\Payjunction\Services\PayjunctionService;
 
 class CustomerNoteService extends BaseCustomerService
@@ -62,10 +63,21 @@ class CustomerNoteService extends BaseCustomerService
      * @param array $data
      *
      * @return \Psr\Http\Message\ResponseInterface
+     *
      * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws CustomerNoteException
      */
     public function store(array $data): \Psr\Http\Message\ResponseInterface
     {
+        $rules = [
+            'note' => ['required']
+        ];
+
+        $validator = $this->service->validate($data, $rules);
+
+        if (!empty($validator)) {
+            throw new CustomerNoteException(json_encode($validator));
+        }
         return $this->service->http->post($this->service->host . $this->buildUrl(), [
             'form_params' => $data
         ]);
