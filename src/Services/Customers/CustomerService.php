@@ -12,6 +12,8 @@ class CustomerService
 
     private CustomerTransformer $transformer;
 
+    protected \Psr\Http\Message\ResponseInterface $data;
+
     /**
      * API Docs
      * @url https://developer.payjunction.com/hc/en-us/sections/203755228-Customers
@@ -34,10 +36,12 @@ class CustomerService
     {
         $query = $this->service->host . $this->endpoint . '?' . http_build_query($queryParams);
 
-        return $this
+        $this->data = $this
             ->service
             ->http
             ->get($query, $this->service->headers);
+
+        return $this->data;
     }
 
     /**
@@ -63,7 +67,7 @@ class CustomerService
             throw new CustomerException(json_encode($validator));
         }
 
-        return $this->service->http->post($this->service->host . $this->endpoint, [
+        return $this->data = $this->service->http->post($this->service->host . $this->endpoint, [
             'form_params' => $data
         ]);
     }
@@ -78,7 +82,7 @@ class CustomerService
      */
     public function show(int $id): \Psr\Http\Message\ResponseInterface
     {
-        return $this->service->http->get($this->service->host . "$this->endpoint/$id");
+        return $this->data = $this->service->http->get($this->service->host . "$this->endpoint/$id");
     }
 
     /**
@@ -92,7 +96,7 @@ class CustomerService
      */
     public function update(int $id, array $data): \Psr\Http\Message\ResponseInterface
     {
-        return $this->service->http->put($this->service->host . "$this->endpoint/$id", [
+        return $this->data = $this->service->http->put($this->service->host . "$this->endpoint/$id", [
             'form_params' => $data
         ]);
     }
@@ -107,16 +111,14 @@ class CustomerService
      */
     public function delete(int $id): \Psr\Http\Message\ResponseInterface
     {
-        return $this->service->http->delete($this->service->host . "$this->endpoint/$id");
+        return $this->data = $this->service->http->delete($this->service->host . "$this->endpoint/$id");
     }
 
     /**
-     * @param array $data
-     *
      * @return array
      */
-    public function transform(array $data): array
+    public function transform(): array
     {
-        return $this->transformer->transform($data);
+        return $this->transformer->transform(json_decode($this->data->getBody(), true));
     }
 }

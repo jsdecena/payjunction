@@ -22,7 +22,7 @@ class CustomerTransformer extends Fractal\TransformerAbstract
             'links' => [
                 [
                     'rel' => 'self',
-                    'uri' => '/customers/' . $data['customerId'],
+                    'uri' => $data['uri'],
                 ]
             ],
         ];
