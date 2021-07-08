@@ -40,9 +40,35 @@ $customerService->store(['firstName' => 'John', 'lastName' => 'Doe']); ### creat
 $customerService->show(1); ### show customer
 $customerService->update(1, ['firstName' => 'Jane', 'lastName' => 'Doe']); ### update customer
 $customerService->delete(1); ### delete customer
+```
 
-// === Get response 
+### Sample on single response
+```php
+use Jsdecena\Payjunction\Services\Customers\CustomerService;
+use Jsdecena\Payjunction\Services\PayjunctionService;
+
+// If you need to make it PRODUCTION mode, set the 4th param to TRUE
+$service = new PayjunctionService('<your-username>', '<your-password>', '<your-app-key>', false);
+$customerService = new CustomerService($service);
+
+// === ie. Get a customer
+$customerService->show(1);
 $response = $customerService->transform();
+return response()->json($response);
+```
+
+### Sample on collection response
+```php
+use Jsdecena\Payjunction\Services\Customers\CustomerService;
+use Jsdecena\Payjunction\Services\PayjunctionService;
+
+// If you need to make it PRODUCTION mode, set the 4th param to TRUE
+$service = new PayjunctionService('<your-username>', '<your-password>', '<your-app-key>', false);
+$customerService = new CustomerService($service);
+
+// === ie. Get a collection
+$customerService->all();
+$response = $customerService->toCollection();
 return response()->json($response);
 ```
 

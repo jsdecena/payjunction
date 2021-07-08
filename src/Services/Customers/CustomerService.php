@@ -121,4 +121,17 @@ class CustomerService implements ServiceInterface
     {
         return $this->transformer->transform(new Customer(json_decode($this->data->getBody(), true)));
     }
+
+    /**
+     * @return array
+     */
+    public function toCollection(): array
+    {
+        $items = json_decode($this->data->getBody(), true);
+        $collection = [];
+        foreach ($items['results'] as $item) {
+            $collection[] = $this->transformer->transform(new Customer($item));
+        }
+        return $collection;
+    }
 }
