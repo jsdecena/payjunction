@@ -7,12 +7,19 @@ Fully tested, un-official [Payjunction](https://www.payjunction.com) SDK for PHP
 
 # Requirements
 PHP >= v7.3
+Laravel >= 6.x
+Lumen >= 6.x
 
 # Install
 
 ```bash
-composer require jsdecena/payjunction
+composer require jsdecena/payjunction:^0.1
 ```
+
+### Lumen
+```
+$app->register('Jsdecena\Payjunction\PayjunctionProvider');
+````
 
 # Usage
 
