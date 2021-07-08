@@ -43,6 +43,7 @@ class CustomerTest extends BaseTestCase
             'customerId' => 1,
             'uri' => 'https://api.payjunctionlabs.com/customers/1',
             'firstName' => 'John',
+            'email' => 'john@doe.com',
             'lastName' => 'Doe',
             'created' => '2021-07-01T17:44:46Z',
             'lastModified' => '2021-07-01T17:44:46Z'
@@ -52,7 +53,7 @@ class CustomerTest extends BaseTestCase
     /**
      * @test
      * @throws \GuzzleHttp\Exception\GuzzleException
-     *
+     * @throws \Jsdecena\Payjunction\Services\Customers\Exceptions\CustomerException
      * @coversNothing \Jsdecena\Payjunction\Services\Customers\CustomerService
      * @covers \Jsdecena\Payjunction\Services\BaseService
      */
