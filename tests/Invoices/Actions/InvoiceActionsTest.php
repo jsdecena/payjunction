@@ -54,9 +54,9 @@ class InvoiceActionsTest extends BaseTestCase
      * @test
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
-     * @covers InvoiceVoidService::void
-     * @covers InvoiceReopenService::reopen
-     * @covers InvoiceReminderService::send
+     * @covers \Jsdecena\Payjunction\Services\Invoices\Actions\InvoiceReminderService
+     * @covers \Jsdecena\Payjunction\Services\Invoices\Actions\InvoiceReopenService
+     * @covers \Jsdecena\Payjunction\Services\Invoices\Actions\InvoiceVoidService
      */
     public function it_should_perform_invoice_actions()
     {

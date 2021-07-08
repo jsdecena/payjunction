@@ -51,7 +51,7 @@ class InvoiceTest extends BaseTestCase
      * @test
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
-     * @covers InvoiceService::all
+     * @covers \Jsdecena\Payjunction\Services\Invoices\InvoiceService
      */
     public function it_should_perform_invoice_crud()
     {

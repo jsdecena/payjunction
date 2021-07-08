@@ -53,7 +53,8 @@ class CustomerTest extends BaseTestCase
      * @test
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
-     * @covers CustomerService::all
+     * @coversNothing \Jsdecena\Payjunction\Services\Customers\CustomerService
+     * @covers \Jsdecena\Payjunction\Services\BaseService
      */
     public function it_should_perform_customer_crud()
     {

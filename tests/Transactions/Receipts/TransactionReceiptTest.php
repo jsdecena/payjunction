@@ -39,7 +39,7 @@ class TransactionReceiptTest extends BaseTestCase
      * @test
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
-     * @covers TransactionReceiptService::all
+     * @covers \Jsdecena\Payjunction\Services\Transactions\Receipts\TransactionReceiptService
      */
     public function it_should_get_all_transaction_receipts()
     {

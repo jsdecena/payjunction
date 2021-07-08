@@ -44,7 +44,7 @@ class CustomerNoteTest extends BaseTestCase
     /** @test
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
-     * @covers CustomerNoteService::all
+     * @covers \Jsdecena\Payjunction\Services\Customers\Notes\CustomerNoteService
      */
     public function it_should_perform_customer_notes_crud()
     {
