@@ -6,9 +6,11 @@
 Fully tested, un-official [Payjunction](https://www.payjunction.com) SDK for PHP
 
 # Requirements
+```
 PHP >= v7.3
 Laravel >= 6.x
 Lumen >= 6.x
+```
 
 # Install
 
