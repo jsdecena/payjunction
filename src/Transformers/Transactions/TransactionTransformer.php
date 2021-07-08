@@ -2,41 +2,42 @@
 
 namespace Jsdecena\Payjunction\Transformers\Transactions;
 
+use Jsdecena\Payjunction\Models\Transactions\Transaction;
 use League\Fractal;
 
 class TransactionTransformer extends Fractal\TransformerAbstract
 {
     /**
-     * @param array $data
+     * @param Transaction $transaction
      *
      * @return array
      */
-    public function transform(array $data): array
+    public function transform(Transaction $transaction): array
     {
         return [
-            'id' => (int)$data['transactionId'],
-            'terminal_id' => $data['terminalId'],
-            'action' => $data['action'],
-            'amount_base' => $data['amountBase'],
-            'amount_tax' => $data['amountTax'],
-            'amount_shipping' => $data['amountShipping'],
-            'amount_tip' => $data['amountTip'],
-            'amount_surcharge' => $data['amountSurcharge'],
-            'amount_total' => $data['amountTotal'],
-            'custom' => $data['custom1'],
-            'invoice_id' => $data['invoiceId'],
-            'invoice_number' => $data['invoiceNumber'],
-            'purchase_order_number' => $data['purchaseOrderNumber'],
-            'method' => $data['method'],
-            'service' => $data['service'],
-            'status' => $data['status'],
-            'signatureStatus' => $data['signatureStatus'],
-            'created_at' => $data['created'],
-            'updated_at' => $data['lastModified'],
+            'id' => $transaction->id,
+            'terminal_id' => $transaction->terminalId,
+            'action' => $transaction->action,
+            'amount_base' => $transaction->amountBase,
+            'amount_tax' => $transaction->amountTax,
+            'amount_shipping' => $transaction->amountShipping,
+            'amount_tip' => $transaction->amountTip,
+            'amount_surcharge' => $transaction->amountSurcharge,
+            'amount_total' => $transaction->amountTotal,
+            'custom' => $transaction->custom,
+            'invoice_id' => $transaction->invoiceId,
+            'invoice_number' => $transaction->invoiceNumber,
+            'purchase_order_number' => $transaction->purchaseOrderNumber,
+            'method' => $transaction->method,
+            'service' => $transaction->service,
+            'status' => $transaction->status,
+            'signatureStatus' => $transaction->signatureStatus,
+            'created_at' => $transaction->createdAt,
+            'updated_at' => $transaction->updatedAt,
             'links' => [
                 [
                     'rel' => 'self',
-                    'uri' => $data['uri'],
+                    'uri' => $transaction->uri,
                 ]
             ],
         ];

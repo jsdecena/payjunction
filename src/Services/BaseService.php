@@ -2,7 +2,6 @@
 
 namespace Jsdecena\Payjunction\Services;
 
-use Illuminate\Validation\Factory;
 use Jsdecena\Payjunction\Validators\Validator;
 
 abstract class BaseService

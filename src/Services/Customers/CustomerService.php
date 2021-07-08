@@ -2,11 +2,13 @@
 
 namespace Jsdecena\Payjunction\Services\Customers;
 
+use Jsdecena\Payjunction\Interfaces\ServiceInterface;
+use Jsdecena\Payjunction\Models\Customers\Customer;
 use Jsdecena\Payjunction\Services\Customers\Exceptions\CustomerException;
 use Jsdecena\Payjunction\Services\PayjunctionService;
 use Jsdecena\Payjunction\Transformers\Customers\CustomerTransformer;
 
-class CustomerService
+class CustomerService implements ServiceInterface
 {
     private PayjunctionService $service;
 
@@ -36,12 +38,10 @@ class CustomerService
     {
         $query = $this->service->host . $this->endpoint . '?' . http_build_query($queryParams);
 
-        $this->data = $this
+        return $this->data = $this
             ->service
             ->http
             ->get($query, $this->service->headers);
-
-        return $this->data;
     }
 
     /**
@@ -119,6 +119,6 @@ class CustomerService
      */
     public function transform(): array
     {
-        return $this->transformer->transform(json_decode($this->data->getBody(), true));
+        return $this->transformer->transform(new Customer(json_decode($this->data->getBody(), true)));
     }
 }

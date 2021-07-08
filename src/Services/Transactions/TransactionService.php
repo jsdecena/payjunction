@@ -2,14 +2,21 @@
 
 namespace Jsdecena\Payjunction\Services\Transactions;
 
+use Jsdecena\Payjunction\Interfaces\ServiceInterface;
+use Jsdecena\Payjunction\Models\Transactions\Transaction;
 use Jsdecena\Payjunction\Services\PayjunctionService;
+use Jsdecena\Payjunction\Transformers\Transactions\TransactionTransformer;
 
-class TransactionService
+class TransactionService implements ServiceInterface
 {
     /**
      * @var PayjunctionService $service
      */
     protected PayjunctionService $service;
+
+    private TransactionTransformer $transformer;
+
+    protected \Psr\Http\Message\ResponseInterface $data;
 
     /**
      * API Docs
@@ -22,6 +29,7 @@ class TransactionService
     public function __construct(PayjunctionService $service)
     {
         $this->service = $service;
+        $this->transformer = new TransactionTransformer();
     }
 
     /**
@@ -32,7 +40,7 @@ class TransactionService
     {
         $query = $this->service->host . $this->endpoint . '?' . http_build_query($queryParams);
 
-        return $this
+        return $this->data =  $this
             ->service
             ->http
             ->get($query, $this->service->headers);
@@ -48,7 +56,7 @@ class TransactionService
      */
     public function store(array $data): \Psr\Http\Message\ResponseInterface
     {
-        return $this->service->http->post($this->service->host . $this->endpoint, [
+        return $this->data =  $this->service->http->post($this->service->host . $this->endpoint, [
             'form_params' => $data
         ]);
     }
@@ -63,7 +71,7 @@ class TransactionService
      */
     public function show(int $id): \Psr\Http\Message\ResponseInterface
     {
-        return $this->service->http->get($this->service->host . $this->endpoint . '/' . $id);
+        return $this->data =  $this->service->http->get($this->service->host . $this->endpoint . '/' . $id);
     }
 
     /**
@@ -77,8 +85,16 @@ class TransactionService
      */
     public function update(int $id, array $data): \Psr\Http\Message\ResponseInterface
     {
-        return $this->service->http->put($this->service->host . $this->endpoint . '/' . $id, [
+        return $this->data =  $this->service->http->put($this->service->host . $this->endpoint . '/' . $id, [
             'form_params' => $data
         ]);
+    }
+
+    /**
+     * @return array
+     */
+    public function transform(): array
+    {
+        return $this->transformer->transform(new Transaction(json_decode($this->data->getBody(), true)));
     }
 }

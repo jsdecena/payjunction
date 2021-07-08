@@ -2,27 +2,28 @@
 
 namespace Jsdecena\Payjunction\Transformers\Customers;
 
+use Jsdecena\Payjunction\Models\Customers\Customer;
 use League\Fractal;
 
 class CustomerTransformer extends Fractal\TransformerAbstract
 {
     /**
-     * @param array $data
+     * @param Customer $customer
      *
      * @return array
      */
-    public function transform(array $data): array
+    public function transform(Customer $customer): array
     {
         return [
-            'id' => (int)$data['customerId'],
-            'first_name' => $data['firstName'],
-            'last_name' => $data['lastName'],
-            'created_at' => $data['created'],
-            'updated_at' => $data['lastModified'],
+            'id' => $customer->id,
+            'first_name' => $customer->firstName,
+            'last_name' => $customer->lastName,
+            'created_at' => $customer->createdAt,
+            'updated_at' => $customer->updatedAt,
             'links' => [
                 [
                     'rel' => 'self',
-                    'uri' => $data['uri'],
+                    'uri' => $customer->uri,
                 ]
             ],
         ];
