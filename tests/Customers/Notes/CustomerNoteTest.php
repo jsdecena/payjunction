@@ -38,6 +38,7 @@ class CustomerNoteTest extends BaseTestCase
             new Response(200, [], json_encode($this->customerNote())), // Show customer note
             new Response(200, [], json_encode($this->customerNote())), // Update customer note
             new Response(202, [], json_encode([])), // Delete
+            new Response(422, [], json_encode([])), // Failed creating note
         ];
     }
 
@@ -83,5 +84,12 @@ class CustomerNoteTest extends BaseTestCase
 
         $this->assertJsonStringEqualsJsonString(json_encode([]), json_encode($deleteCustomerNoteDecode));
         $this->assertSame(202, $deleteCustomerNote->getStatusCode());
+
+        // Create customer note failure
+        $createCustomerNoteFail = $this->customerNoteService->store([]);
+        $createCustomerNoteFailDecode = json_decode($createCustomerNoteFail->getBody(), true);
+
+        $this->assertJsonStringEqualsJsonString(json_encode(['errors' => ['note' => 'The note is required']]), json_encode($createCustomerNoteFailDecode));
+        $this->assertSame(422, $createCustomerNoteFail->getStatusCode());
     }
 }

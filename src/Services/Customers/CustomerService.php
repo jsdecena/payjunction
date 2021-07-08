@@ -2,6 +2,7 @@
 
 namespace Jsdecena\Payjunction\Services\Customers;
 
+use Jsdecena\Payjunction\Services\Customers\Exceptions\CustomerException;
 use Jsdecena\Payjunction\Services\PayjunctionService;
 
 class CustomerService
@@ -42,9 +43,22 @@ class CustomerService
      *
      * @return \Psr\Http\Message\ResponseInterface
      * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws CustomerException
      */
     public function store(array $data): \Psr\Http\Message\ResponseInterface
     {
+        $rules = [
+            'email' => ['required'],
+            'firstName' => ['required'],
+            'lastName' => ['required'],
+        ];
+
+        $validator = $this->service->validate($data, $rules);
+
+        if (!empty($validator)) {
+            throw new CustomerException(json_encode($validator));
+        }
+
         return $this->service->http->post($this->service->host . $this->endpoint, [
             'form_params' => $data
         ]);

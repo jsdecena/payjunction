@@ -2,6 +2,9 @@
 
 namespace Jsdecena\Payjunction\Services;
 
+use Illuminate\Validation\Factory;
+use Jsdecena\Payjunction\Validators\Validator;
+
 abstract class BaseService
 {
     protected $username;
@@ -46,5 +49,32 @@ abstract class BaseService
             return 'https://api.payjunction.com';
         }
         return 'https://api.payjunctionlabs.com';
+    }
+
+    /**
+     * @param array $fields
+     * @param array $rules
+     *
+     * @return array
+     */
+    public function validate(array $fields, array $rules): array
+    {
+        $messages = [
+            'required' => 'The :attribute field is required.',
+            'firstName' => 'The :attribute field is required.',
+            'lastName' => 'The :attribute field is required.',
+        ];
+
+        $validator = Validator::make()->make($fields, $rules, $messages);
+
+        $errorMessages = [];
+        if($validator->fails()){
+            $errors = $validator->errors();
+            foreach($errors->all() as $message){
+                $errorMessages[] = $message;
+            }
+        }
+
+        return $errorMessages;
     }
 }

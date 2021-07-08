@@ -27,11 +27,14 @@
         }
     },
     "require": {
-        "php": "^7.3",
+        "php": "^7.2",
         "ext-json": "*",
-        "guzzlehttp/guzzle": "^7.3"
+        "guzzlehttp/guzzle": "^7.0",
+        "illuminate/filesystem": "^6.20",
+        "illuminate/validation": "^6.20",
+        "illuminate/translation": "^6.20"
     },
     "require-dev": {
-        "orchestra/testbench": "^6.19"
+        "orchestra/testbench": "^4.17"
     }
 }

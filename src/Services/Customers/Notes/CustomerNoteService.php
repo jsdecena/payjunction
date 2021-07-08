@@ -17,7 +17,7 @@ class CustomerNoteService extends BaseCustomerService
      */
 
     /** @var string $endpoint */
-    private string $noteEndpoint = '/notes';
+    private string $noteEndpoint = 'notes';
 
     public function __construct(int $customerId, PayjunctionService $service)
     {
