@@ -4,10 +4,13 @@ namespace Jsdecena\Payjunction\Services\Customers;
 
 use Jsdecena\Payjunction\Services\Customers\Exceptions\CustomerException;
 use Jsdecena\Payjunction\Services\PayjunctionService;
+use Jsdecena\Payjunction\Transformers\Customers\CustomerTransformer;
 
 class CustomerService
 {
     private PayjunctionService $service;
+
+    private CustomerTransformer $transformer;
 
     /**
      * API Docs
@@ -20,6 +23,7 @@ class CustomerService
     public function __construct(PayjunctionService $service)
     {
         $this->service = $service;
+        $this->transformer = new CustomerTransformer();
     }
 
     /**
@@ -74,7 +78,7 @@ class CustomerService
      */
     public function show(int $id): \Psr\Http\Message\ResponseInterface
     {
-        return $this->service->http->get($this->service->host . $this->endpoint . '/' . $id);
+        return $this->service->http->get($this->service->host . "$this->endpoint/$id");
     }
 
     /**
@@ -88,7 +92,7 @@ class CustomerService
      */
     public function update(int $id, array $data): \Psr\Http\Message\ResponseInterface
     {
-        return $this->service->http->put($this->service->host . $this->endpoint . '/' . $id, [
+        return $this->service->http->put($this->service->host . "$this->endpoint/$id", [
             'form_params' => $data
         ]);
     }
@@ -103,6 +107,16 @@ class CustomerService
      */
     public function delete(int $id): \Psr\Http\Message\ResponseInterface
     {
-        return $this->service->http->delete($this->service->host . $this->endpoint . '/' . $id);
+        return $this->service->http->delete($this->service->host . "$this->endpoint/$id");
+    }
+
+    /**
+     * @param array $data
+     *
+     * @return array
+     */
+    public function transform(array $data): array
+    {
+        return $this->transformer->transform($data);
     }
 }
